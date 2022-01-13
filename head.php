@@ -123,6 +123,11 @@
             </a>
           </li>
           <li>
+            <a href="list_coments.php">
+              <i class="bi bi-circle"></i><span>Lista comentários</span>
+            </a>
+          </li>
+          <li>
             <a href="novo_cardapio.php">
               <i class="bi bi-circle"></i><span>Adicionar almoço</span>
             </a>

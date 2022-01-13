@@ -6,24 +6,26 @@ require_once "config.php";
 
 
  
-if((isset($_POST['nome']))){
+if(isset($_POST['nome'])  &&  $_SERVER["REQUEST_METHOD"] == "POST" ){
     
 
-    $nome  = $_POST["nome"];
-    $setor  = $_POST["setor"];
+    $nome        = $_POST["nome"];
+    $setor       = $_POST["setor"];
     $comentario  = $_POST["comentario"];
     $id_cardapio = $_POST["id_cardapio"];
+    $rating      = $_POST["rating"];
   
             $data = [
                 
                 'nome'         => $nome,
                 'setor'        => $setor,
                 'comentario'   => $comentario,
-                'id_cardapio'  => $id_cardapio
+                'id_cardapio'  => $id_cardapio,
+                'rating'       => $rating
                 
             ];
-            $sql = "INSERT INTO comentario_almoco ( nome, setor, comentario, id_cardapio)
-                                  VALUES (:nome, :setor, :comentario, :id_cardapio)";
+            $sql = "INSERT INTO comentario_almoco ( nome, setor, comentario, id_cardapio, rating)
+                                  VALUES (:nome, :setor, :comentario, :id_cardapio, :rating)";
             $stmt= $pdo->prepare($sql);
             
             
