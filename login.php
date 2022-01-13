@@ -105,14 +105,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                       <div class="invalid-feedback">Senha</div>
                     </div>
 
-                    <div class="col-12">
-                      <img src="captcha.php" alt="Código captcha"><br>
-                    </div>
-                    
-
-                    <div class="col-12">
-                      <input type="text" placeholder="Digite o captcha" name="captcha" id="captcha" class="form-control" required>
-                    </div>
 
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>

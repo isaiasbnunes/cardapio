@@ -9,7 +9,6 @@ if ( !isset($_SESSION['username'])){
 }
 
 
-
 $id = $_GET["id"];
 
 if($_SERVER["REQUEST_METHOD"] == "GET" && $id != ""  ){

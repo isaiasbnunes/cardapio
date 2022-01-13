@@ -10,10 +10,8 @@ $username = $password = "";
 $username_err = $password_err = $login_err = "";
  
 
-if( $_SESSION['captcha'] == $_POST['captcha']){
-
     // Processando dados do formulário quando o formulário é enviado
-    if($_SERVER["REQUEST_METHOD"] == "POST" ){
+ if($_SERVER["REQUEST_METHOD"] == "POST" ){
     
         // Verifique se o nome de usuário está vazio
         if(empty(trim($_POST["username"]))){
@@ -83,11 +81,10 @@ if( $_SESSION['captcha'] == $_POST['captcha']){
         
         // Fechar conexão
         unset($pdo);
+    } else{
+        $_SESSION['msg'] = "ERRO! Caracteres inválidos.";
+        header("Location: login.php");
     }
-}else{
-	$_SESSION['msg'] = "ERRO! Caracteres inválidos.";
-	header("Location: login.php");
-}
 
 
 
