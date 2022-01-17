@@ -52,31 +52,22 @@ include('head.php');
 
                                   echo "<tr>";
                                     echo "<td>{$linha['nome']}</td>";
-                                    echo  "<td>" . setor_str($linha['setor']) . "</td>";
+                                    echo  "<td>" . setor_str($linha['setor'], $pdo) . "</td>";
                                     echo "<td>{$linha['rating']}</td> ";
                                     echo "<td>{$linha['comentario']}</td> ";
                                 }
 
-                                function setor_str($id){
-                                    $nome =" ";
-                                    $sql = "SELECT * FROM setor WHERE id = :id";
-            
-                                    if($stmt = $pdo->prepare($sql)){
-                                        // Vincule as variáveis à instrução preparada como parâmetros
-                                        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
-                                        
-                                       
-                                        // Tente executar a declaração preparada
-                                        if($stmt->execute()){
-                                            // Verifique se o nome de usuário existe, se sim, verifique a senha
-                                            if($stmt->rowCount() == 1){
-                                                if($row = $stmt->fetch()){
-                                                    $nome = $row["nome"];
-                                                }
-                                            }
-                                        }
-                                    }
-                                    return $nome;
+                                function setor_str($id, $pdo){
+              
+                                      //no Where você manda filtrar os dados pela coluna codigo
+                                      $sql = 'SELECT * FROM setor WHERE id = :id LIMIT 1 ';
+                                      $stm = $pdo->prepare($sql);
+                                      $stm->bindValue(':id', $id);
+
+                                      $stm->execute();
+                                      $setor = $stm->fetch(PDO::FETCH_OBJ);
+
+                                  return $setor->nome;
                                 }
                             
                         ?>
