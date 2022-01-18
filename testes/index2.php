@@ -167,11 +167,9 @@
 
               </div>
                 <div id="contact">
-                  <a href="comentario_cardapio.php">
                   <i class="bi bi-chat-left-text" data-bs-toggle="modal" data-bs-target="#feedback-modal">
                       Deixe seu comentário
                   </i>
-                  </a>
                 </div>
 
             </div>
@@ -224,6 +222,50 @@
 
 
     
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="feedback-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Avaliação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+             <!-- Form    -->
+             <form class="row g-3" action="<?php echo htmlspecialchars("processar_comentario_almoco.php"); ?>" method="post"  >
+                <input type="hidden" value="<?php echo $id_cardapio; ?>" name="id_cardapio" >
+                    <div class="col-12">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="nome">
+                    </div>
+                            
+                    <div class="col-12">
+                        <label for="setor" class="form-label">Setor</label>
+                        <select name="setor" class="form-select" aria-label="Default select example">
+                                      
+                          <?php
+                            $consulta = $pdo->query("SELECT * FROM setor;" );    
+                              while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                                   echo " <option value='{$linha['id']}'>{$linha['nome']}</option> ";
+                              }
+                          ?>
+                        </select>
+                    </div>
+
+              
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
