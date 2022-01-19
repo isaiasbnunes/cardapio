@@ -113,10 +113,10 @@
                 
                     <div class="d-flex align-items-center">
                     <form class="row g-3" action="<?php echo htmlspecialchars("processar_comentario_almoco.php"); ?>" method="post"  >
-                              <input type="hidden" value="<?php echo $id_cardapio; ?>" name="id_cardapio" >
+                              <input type="hidden" value="<?php echo $_GET["id"]; ?>" name="id_cardapio" >
                               <div class="col-12">
                                   <label for="nome" class="form-label">Nome</label>
-                                  <input type="text" class="form-control" id="nome" name="nome" placeholder="nome">
+                                  <input type="text" class="form-control" id="nome" name="nome" placeholder="nome" required>
                               </div>
 
                               <div class="col-12">
@@ -239,18 +239,17 @@
     </div>
   
 
-   
-
-
-
                               <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="comentario" id="comentario" name="comentario" style="height: 100px;"></textarea>
+                                    <textarea class="form-control" placeholder="comentario" id="comentario" name="comentario" style="height: 100px;" required></textarea>
                                     <label for="obs">Comentário</label>
                                 </div>
                               </div>
                               <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="submit" >Salvar</button>
+                              
+                              <button type="submit" class="btn btn-primary" id="submit" >
+                                  <i class="ri-save-3-fill"></i> Salvar
+                              </button>
                       </div>
                           </form><!--  Form   -->
 

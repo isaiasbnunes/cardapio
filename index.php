@@ -1,5 +1,6 @@
 <?php
   require_once "config.php";
+  session_start();
   
   date_default_timezone_set('America/Recife'); 
 
@@ -20,6 +21,8 @@
   $sql = "UPDATE count SET visitas=? ";
   $stmt= $pdo->prepare($sql);
   $stmt->execute([$count]);
+ 
+   $id_cardapio = 0;
 
 ?>
 
@@ -149,6 +152,7 @@
                               $consulta = $pdo->query("SELECT * FROM cardapio where data_cardapio = '$data' ;" );
 
                               while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                                $id_cardapio =  $linha['id'];
                                 echo "<li>{$linha['item1']}</li>";
                                 if(!empty(trim($linha['item2']))){echo "<li>{$linha['item2']}</li> ";}
                                 if(!empty(trim($linha['item3']))){echo "<li>{$linha['item3']}</li> ";}
@@ -166,8 +170,20 @@
                 </div>
 
               </div>
+              <?php
+                        if(isset($_SESSION['msg'])){
+                          echo " <div class='alert alert-success alert-dismissible fade show' role='alert'>"
+                                  .  $_SESSION['msg'] .
+
+                                  
+                                 " <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                                     </button> </div> " ;
+
+                          unset($_SESSION['msg']);
+                        }
+              ?>
                 <div id="contact">
-                  <a href="comentario_cardapio.php">
+                  <a href="comentario_cardapio.php?id=<?php echo $id_cardapio; ?>" style="text-decoration: none; color: #000000;" >
                   <i class="bi bi-chat-left-text" data-bs-toggle="modal" data-bs-target="#feedback-modal">
                       Deixe seu comentário
                   </i>

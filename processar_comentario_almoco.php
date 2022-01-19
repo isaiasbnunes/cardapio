@@ -35,7 +35,7 @@ if(isset($_POST['nome'])  &&  $_SERVER["REQUEST_METHOD"] == "POST" ){
              //   header('Location:index.php');
                
             } else{
-                echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
+                $_SESSION['msg'] = "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
             }
 
             // Fechar declaração

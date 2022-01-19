@@ -14,12 +14,7 @@ include('head.php');
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
-      <div style=" right: 0px; width: 300px; padding: 10px;" >
-        
-          <input id="date"  name="data_cardapio" type="date" class="form-control">
-      </div>
-    </div><!-- End Page Title -->
+   
      
        
 
@@ -39,6 +34,7 @@ include('head.php');
                     <th scope="col">Setor</th>
                     <th scope="col">Rating</th>
                     <th scope="col">Comentário</th>
+                    <th scope="col"> Detalhes</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -55,6 +51,11 @@ include('head.php');
                                     echo  "<td>" . setor_str($linha['setor'], $pdo) . "</td>";
                                     echo "<td>{$linha['rating']}</td> ";
                                     echo "<td>{$linha['comentario']}</td> ";
+                                    echo " <td>
+                                    <i class='ri-file-list-3-line' data-bs-toggle='modal' data-bs-target='#feedback-modal'>
+                                      
+                                    </i></td>";
+                                    
                                 }
 
                                 function setor_str($id, $pdo){
